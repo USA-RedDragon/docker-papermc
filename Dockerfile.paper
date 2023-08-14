@@ -10,7 +10,9 @@ WORKDIR /minecraft
 
 RUN apk add --no-cache \
   curl \
-  jq
+  jq \
+  nano \
+  bash
 
 RUN curl -fSsL https://api.papermc.io/v2/projects/paper/versions/${MC_VERSION}/builds -o /tmp/paper.json
 RUN <<__DOCKER_EOF__

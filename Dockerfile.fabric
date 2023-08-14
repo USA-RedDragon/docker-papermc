@@ -16,7 +16,9 @@ WORKDIR /minecraft
 
 RUN apk add --no-cache \
   curl \
-  jq
+  jq \
+  nano \
+  bash
 
 RUN curl -fsL https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/${INSTALLER_VERSION}/server/jar -o /fabric-${MC_VERSION}-${FABRIC_VERSION}-${INSTALLER_VERSION}.jar
 
