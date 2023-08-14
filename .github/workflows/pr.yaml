@@ -6,12 +6,23 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  pr-paper:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Build and push
+      - name: Build Paper
         uses: docker/build-push-action@v4
         with:
           push: false
+          file: ./Dockerfile.paper
+  pr-fabric:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build Fabric
+        uses: docker/build-push-action@v4
+        with:
+          push: false
+          file: ./Dockerfile.fabric

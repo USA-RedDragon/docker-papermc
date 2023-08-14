@@ -11,4 +11,14 @@ MEMORY_OPTS=${MEMORY_OPTS:-"-Xms128M -Xmx1G"}
 
 JAVA_OPTS="${MEMORY_OPTS} ${EXTRA_JAVA_OPTS}"
 
-exec java ${JAVA_OPTS} -jar /paper-${MC_VERSION}-$(cat /build_num).jar --nogui --universe /minecraft/worlds
+JARPATH=""
+if [ "${MC_VARIANT}" = "paper" ]; then
+    JARPATH="/paper-${MC_VERSION}-$(cat /build_num).jar"
+elif [ "${MC_VARIANT}" = "fabric" ]; then
+    JARPATH="/fabric-${MC_VERSION}-${FABRIC_VERSION}-${INSTALLER_VERSION}.jar"
+else
+    echo "Unknown variant: ${MC_VARIANT}"
+    exit 1
+fi
+
+exec java ${JAVA_OPTS} -jar "${JARPATH}" --nogui --universe /minecraft/worlds

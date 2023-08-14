@@ -3,6 +3,9 @@ FROM amazoncorretto:17.0.8-alpine@sha256:6e6f780411eae55e8dcb59391aa09dd778f0fa2
 ARG MC_VERSION=1.20.1
 ENV MC_VERSION=${MC_VERSION}
 
+ARG MC_VARIANT=paper
+ENV MC_VARIANT=${MC_VARIANT}
+
 WORKDIR /minecraft
 
 RUN apk add --no-cache \
