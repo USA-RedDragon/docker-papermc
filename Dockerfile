@@ -37,4 +37,6 @@ ENV ACCEPT_EULA=false
 ENV EXTRA_JAVA_OPTS=""
 ENV MEMORY_OPTS="-Xms128M -Xmx1G"
 
+USER minecraft
+
 ENTRYPOINT /entrypoint.sh
