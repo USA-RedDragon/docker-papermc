@@ -11,6 +11,4 @@ MEMORY_OPTS=${MEMORY_OPTS:-"-Xms128M -Xmx1G"}
 
 JAVA_OPTS="${MEMORY_OPTS} ${EXTRA_JAVA_OPTS}"
 
-chown -R minecraft:minecraft /minecraft
-
 exec su minecraft -c "cd /minecraft && java ${JAVA_OPTS} -jar /paper-${MC_VERSION}-$(cat /build_num).jar --nogui --universe /minecraft/worlds"
