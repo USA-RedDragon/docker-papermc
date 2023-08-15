@@ -21,4 +21,4 @@ else
     exit 1
 fi
 
-exec java ${JAVA_OPTS} -jar "${JARPATH}" --nogui --universe /minecraft/worlds
+exec java ${JAVA_OPTS} -jar "${JARPATH}" --nogui
