@@ -25,10 +25,10 @@ jobs:
         id: extract_tags
         run: |
           MC_VERSION="$(echo $GITHUB_REF | sed -e 's/refs\/heads\/mc\///' -e 's/refs\/heads\/main/latest/')"
-          TAGS="TAGS=ghcr.io/usa-reddragon/papermc:$MC_VERSION"
+          TAGS="ghcr.io/usa-reddragon/papermc:$MC_VERSION"
 
           if [ "${GITHUB_REF}" != "refs/heads/main" ]; then
-            TAGS="$TAGS,ghcr.io/usa-reddragon/papermc:$(grep 'ARG PAPER_BUILD' Dockerfile.paper | sed -e 's/ARG PAPER_BUILD=//')"
+            TAGS="$TAGS,ghcr.io/usa-reddragon/papermc:$MC_VERSION-$(grep 'ARG PAPER_BUILD' Dockerfile.paper | sed -e 's/ARG PAPER_BUILD=//')"
           fi
           echo "TAGS=$TAGS" >> $GITHUB_OUTPUT
       - name: Build and push Paper
