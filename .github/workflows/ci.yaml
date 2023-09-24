@@ -51,7 +51,7 @@ jobs:
             TAGS="$TAGS,ghcr.io/usa-reddragon/$MC_VARIANT:$MC_VERSION"
           fi
 
-          if [ "$MC_VARIANT" = "papermc" ]; then
+          if [ "$MC_VARIANT" = "papermc" && "${GITHUB_REF}" != "refs/heads/paper" ]; then
             TAGS="$TAGS,ghcr.io/usa-reddragon/$MC_VARIANT:$MC_VERSION-$(grep 'ARG PAPER_BUILD' Dockerfile | sed -e 's/ARG PAPER_BUILD=//')"
           fi
           echo "TAGS=$TAGS" >> $GITHUB_OUTPUT
