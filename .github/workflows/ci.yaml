@@ -19,12 +19,18 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract tag from branch
+        id: extract_tag
+        run: |
+          # If the branch is "mc/1.20.1", this will extract "1.20.1"
+          # if the branch is "main", this will extract "latest"
+          echo "TAG=$(echo $GITHUB_REF | sed -e 's/refs\/heads\/mc\///' -e 's/refs\/heads\/main/latest/')" >> $GITHUB_OUTPUT
       - name: Build and push Paper
         uses: docker/build-push-action@v5
         with:
           push: true
           file: ./Dockerfile.paper
-          tags: ghcr.io/usa-reddragon/papermc:latest
+          tags: ghcr.io/usa-reddragon/papermc:${{ steps.extract_tag.outputs.TAG }}
   fabric:
     runs-on: ubuntu-latest
     steps:
@@ -36,9 +42,15 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract tag from branch
+        id: extract_tag
+        run: |
+          # If the branch is "mc/1.20.1", this will extract "1.20.1"
+          # if the branch is "main", this will extract "latest"
+          echo "TAG=$(echo $GITHUB_REF | sed -e 's/refs\/heads\/mc\///' -e 's/refs\/heads\/main/latest/')" >> $GITHUB_OUTPUT
       - name: Build and push Fabric
         uses: docker/build-push-action@v5
         with:
           push: true
           file: ./Dockerfile.fabric
-          tags: ghcr.io/usa-reddragon/fabric:latest
+          tags: ghcr.io/usa-reddragon/fabric:${{ steps.extract_tag.outputs.TAG }}
