@@ -3,8 +3,9 @@ name: Test Docker Build
 on:
   pull_request:
     branches:
-      - 'main'
-      - 'mc/*'
+      - 'paper'
+      - 'fabric'
+      - 'mc/*/*'
 
 jobs:
   pr-paper:
