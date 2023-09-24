@@ -6,7 +6,6 @@
     "baseBranches": ["main", "/^mc\\/.*/"],
     "regexManagers": [
         {
-            "customType": "regex",
             "fileMatch": ["Dockerfile.paper"],
             "matchStrings": ["^ARG MC_VERSION=(?<currentValue>\\S+)$"],
             "depNameTemplate": "paper-minecraft-version",
