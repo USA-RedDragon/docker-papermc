@@ -8,7 +8,7 @@ on:
       - 'mc/*/*'
 
 jobs:
-  pr-paper:
+  pr-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
@@ -17,14 +17,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: false
-          file: ./Dockerfile.paper
-  pr-fabric:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Build Fabric
-        uses: docker/build-push-action@v5
-        with:
-          push: false
-          file: ./Dockerfile.fabric
+          file: ./Dockerfile
