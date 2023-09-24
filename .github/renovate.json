@@ -6,14 +6,14 @@
     "baseBranches": ["fabric","paper","/^mc\\/.*\\/.*/"],
     "regexManagers": [
         {
-            "fileMatch": ["(^|/)Dockerfile\\.paper$"],
+            "fileMatch": ["(^|/)Dockerfile$"],
             "matchStrings": ["ARG PAPER_VERSION=(?<currentValue>.*)"],
             "depNameTemplate": "paper-minecraft",
             "versioningTemplate": "semver-coerced",
             "datasourceTemplate": "custom.paper-minecraft"
         },
         {
-            "fileMatch": ["(^|/)Dockerfile\\.paper$"],
+            "fileMatch": ["(^|/)Dockerfile$"],
             "matchStrings": ["ARG PAPER_VERSION=(?<mcVersion>.*)\\nARG PAPER_BUILD=(?<currentValue>.*)"],
             "depNameTemplate": "paper-{{{mcVersion}}}-builds",
             "versioningTemplate": "loose",
