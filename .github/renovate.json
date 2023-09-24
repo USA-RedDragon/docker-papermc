@@ -4,9 +4,8 @@
         "local>USA-RedDragon/renovate-configs"
     ],
     "baseBranches": ["main", "/^mc\\/.*/"],
-    "customManagers": [
+    "regexManagers": [
         {
-            "customType": "regex",
             "fileMatch": ["Dockerfile.paper"],
             "matchStrings": ["^ARG MC_VERSION=(?<currentValue>\\S+)$"],
             "depNameTemplate": "paper-minecraft-version",
