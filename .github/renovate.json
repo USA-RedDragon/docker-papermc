@@ -6,7 +6,7 @@
     "baseBranches": ["main", "/^mc\\/.*/"],
     "regexManagers": [
         {
-            "fileMatch": ["Dockerfile.paper"],
+            "fileMatch": ["(^|/)Dockerfile\\.paper$"],
             "matchStrings": ["^ARG PAPER_VERSION=(?<currentValue>\\S+)$"],
             "depNameTemplate": "paper-minecraft-version",
             "versioningTemplate": "semver-coerced",
