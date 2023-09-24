@@ -3,6 +3,7 @@
     "extends": [
         "local>USA-RedDragon/renovate-configs"
     ],
+    "baseBranches": ["main", "/^mc\\/.*/"],
     "customManagers": [
         {
             "customType": "regex",
