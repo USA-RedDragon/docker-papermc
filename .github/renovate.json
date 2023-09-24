@@ -7,7 +7,7 @@
     "regexManagers": [
         {
             "fileMatch": ["(^|/)Dockerfile\\.paper$"],
-            "matchStrings": ["^ARG PAPER_VERSION=(?<currentValue>\\S+)$"],
+            "matchStrings": ["ARG PAPER_VERSION=(?<currentValue>.*)"],
             "depNameTemplate": "paper-minecraft-version",
             "versioningTemplate": "semver-coerced",
             "datasourceTemplate": "custom.paper-minecraft-version"
