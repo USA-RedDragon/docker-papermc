@@ -13,7 +13,7 @@ JAVA_OPTS="${MEMORY_OPTS} ${EXTRA_JAVA_OPTS}"
 
 JARPATH=""
 if [ "${MC_VARIANT}" = "paper" ]; then
-    JARPATH="/paper-${MC_VERSION}-$(cat /build_num).jar"
+    JARPATH="/paper-${PAPER_VERSION}.jar"
 elif [ "${MC_VARIANT}" = "fabric" ]; then
     JARPATH="/fabric-${MC_VERSION}-${FABRIC_VERSION}-${INSTALLER_VERSION}.jar"
 else

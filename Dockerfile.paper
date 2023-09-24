@@ -1,8 +1,9 @@
 FROM amazoncorretto:17.0.8-alpine@sha256:f9be18df3634cb5d3d01a1f3e8aeb1b3cbcf3847c773aa53523cf8e54ab113ba
 
-ARG MC_VERSION=1.20.1
-ENV MC_VERSION=${MC_VERSION}
+ARG PAPER_VERSION=1.20.1-195
+ENV PAPER_VERSION="${PAPER_VERSION}"
 
+# Used in entrypoint
 ARG MC_VARIANT=paper
 ENV MC_VARIANT=${MC_VARIANT}
 
@@ -14,24 +15,28 @@ RUN apk add --no-cache \
   nano \
   bash
 
-RUN curl -fSsL https://api.papermc.io/v2/projects/paper/versions/${MC_VERSION}/builds -o /tmp/paper.json
+SHELL [ "bash", "-c" ]
+
 RUN <<__DOCKER_EOF__
 set -eux
+IFS='-'
+read -ra VERSIONS_ARR <<< "${PAPER_VERSION}"
+IFS=' '
+MC_VERSION="${VERSIONS_ARR[0]}"
+PAPER_BUILD="${VERSIONS_ARR[1]}"
 
-BUILD_NUM=$(cat /tmp/paper.json | jq -r '.builds[-1].build')
-SHA256=$(cat /tmp/paper.json | jq -r '.builds[-1].downloads.application.sha256')
+SHA256=$(curl -fSsL https://api.papermc.io/v2/projects/paper/versions/${MC_VERSION}/builds | jq -r ".builds[] | select(.build==${PAPER_BUILD}).downloads.application.sha256")
 
 curl -fSsL \
-  https://api.papermc.io/v2/projects/paper/versions/${MC_VERSION}/builds/${BUILD_NUM}/downloads/paper-${MC_VERSION}-${BUILD_NUM}.jar \
-  -o /paper-${MC_VERSION}-${BUILD_NUM}.jar
+  https://api.papermc.io/v2/projects/paper/versions/${MC_VERSION}/builds/${PAPER_BUILD}/downloads/paper-${PAPER_VERSION}.jar \
+  -o /paper-${PAPER_VERSION}.jar
 
-echo "${SHA256}  /paper-${MC_VERSION}-${BUILD_NUM}.jar" | sha256sum -c
-echo "${BUILD_NUM}" > /build_num
+echo "${SHA256}  /paper-${PAPER_VERSION}.jar" | sha256sum -c
 __DOCKER_EOF__
 
 RUN addgroup -g 1000 minecraft
 RUN adduser -u 1000 -G minecraft -s /bin/sh -D minecraft
-RUN chown -R minecraft:minecraft /minecraft /build_num /paper-${MC_VERSION}-$(cat /build_num).jar
+RUN chown -R minecraft:minecraft /minecraft /paper-${PAPER_VERSION}.jar
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
