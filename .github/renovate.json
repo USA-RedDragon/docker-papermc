@@ -4,7 +4,7 @@
         "local>USA-RedDragon/renovate-configs"
     ],
     "baseBranches": ["main", "/^mc\\/.*/"],
-    "customManagers": [
+    "regexManagers": [
         {
             "customType": "regex",
             "fileMatch": ["Dockerfile.paper"],
