@@ -36,13 +36,13 @@
             "depNameTemplate": "net.fabricmc:fabric-installer"
         },
         {
-            "fileMatch": ["(^|/)Dockerfile$"],
-            "matchStrings": [
-                "ARG MC_VERSION=(?<currentValue>.*)"
-            ],
-            "datasourceTemplate": "git-refs",
+            "fileMatch": ["(^|/)Dockerfile$"],
+            "matchStrings": [
+                "ARG MC_VERSION=(?<currentValue>.*)"
+            ],
+            "datasourceTemplate": "git-refs",
             "packageNameTemplate": "https://github.com/FabricMC/fabric",
-            "depNameTemplate": "https://github.com/FabricMC/fabric"
+            "depNameTemplate": "https://github.com/FabricMC/fabric"
         }
     ],
     "customDatasources": {
