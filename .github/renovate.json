@@ -89,9 +89,9 @@
             "allowedVersions": "<=1.20.1"
         },
         {
-            "matchPackagePatterns": ["^https:\\/\\/github.com\\/FabricMC\\/fabric$"],
-            "matchBaseBranches": ["/^mc\\/fabric\\/1\\.20\\.2/"],
-            "allowedVersions": "<=1.20.2"
+            "matchPackagePatterns": ["^https:\\/\\/github.com\\/FabricMC\\/fabric$"],
+            "matchBaseBranches": ["/^mc\\/fabric\\/1\\.20\\.2/"],
+            "allowedVersions": "<=1.20.2"
         }
     ]
 }
