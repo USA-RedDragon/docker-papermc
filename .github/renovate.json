@@ -43,7 +43,7 @@
             "datasourceTemplate": "git-refs",
             "packageNameTemplate": "https://github.com/FabricMC/fabric",
             "depNameTemplate": "net.fabricmc:fabric-installer"
-        }
+        }
     ],
     "customDatasources": {
         "paper-minecraft": {
