@@ -18,7 +18,32 @@
             "depNameTemplate": "paper-{{{mcVersion}}}-builds",
             "versioningTemplate": "loose",
             "datasourceTemplate": "custom.paper-{{{mcVersion}}}-builds"
-        }
+        },
+        {
+            "fileMatch": ["(^|/)Dockerfile$"],
+            "matchStrings": [
+                "ARG FABRIC_VERSION=(?<currentValue>.*)"
+            ],
+            "datasourceTemplate": "maven",
+            "depNameTemplate": "net.fabricmc:fabric-loader"
+        },
+        {
+            "fileMatch": ["(^|/)Dockerfile$"],
+            "matchStrings": [
+                "ARG INSTALLER_VERSION=(?<currentValue>.*)"
+            ],
+            "datasourceTemplate": "maven",
+            "depNameTemplate": "net.fabricmc:fabric-installer"
+        },
+        {
+            "fileMatch": ["(^|/)Dockerfile$"],
+            "matchStrings": [
+                "ARG MC_VERSION=(?<currentValue>.*)"
+            ],
+            "datasourceTemplate": "git-refs",
+            "packageNameTemplate": "https://github.com/FabricMC/fabric",
+            "depNameTemplate": "net.fabricmc:fabric-installer"
+        }
     ],
     "customDatasources": {
         "paper-minecraft": {
@@ -50,6 +75,23 @@
             "matchPackagePatterns": ["^paper-minecraft$"],
             "matchBaseBranches": ["/^mc\\/paper\\/1\\.20\\.2/"],
             "allowedVersions": "<=1.20.2"
-        }
+        },
+        {
+            "matchDatasources": ["maven"],
+            "matchPackagePatterns": ["^fabric-.*$"],
+            "registryUrls": [
+                "https://maven.fabricmc.net/"
+            ]
+        },
+        {
+            "matchPackagePatterns": ["^https:\\/\\/github.com\\/FabricMC\\/fabric$"],
+            "matchBaseBranches": ["/^mc\\/fabric\\/1\\.20\\.1/"],
+            "allowedVersions": "<=1.20.1"
+        },
+        {
+            "matchPackagePatterns": ["^https:\\/\\/github.com\\/FabricMC\\/fabric$"],
+            "matchBaseBranches": ["/^mc\\/fabric\\/1\\.20\\.2/"],
+            "allowedVersions": "<=1.20.2"
+        }
     ]
 }
