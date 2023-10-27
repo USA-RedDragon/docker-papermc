@@ -67,6 +67,13 @@
     },
     "packageRules": [
         {
+            "matchUpdateTypes": [
+                "major"
+            ],
+            "automerge": true,
+            "matchPackagePatterns": ["paper-.*-builds"]
+        },
+        {
             "matchPackagePatterns": ["^paper-minecraft$"],
             "matchBaseBranches": ["/^mc\\/paper\\/1\\.20\\.1/"],
             "allowedVersions": "<=1.20.1"
