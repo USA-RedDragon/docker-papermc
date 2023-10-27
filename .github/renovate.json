@@ -63,6 +63,12 @@
             "transformTemplates": [
                 "{\"releases\":[{\"version\": $string($$.builds[-1].build),\"sourceUrl\":\"https://github.com/PaperMC/Paper\",\"changelogUrl\":\"https://papermc.io/downloads/all\"}],\"sourceUrl\": \"https://github.com/PaperMC/Paper\",\"homepage\": \"https://papermc.io\"}"
             ]
+        },
+        "paper-1.20.3-builds": {
+            "defaultRegistryUrlTemplate": "https://api.papermc.io/v2/projects/paper/versions/1.20.3/builds",
+            "transformTemplates": [
+                "{\"releases\":[{\"version\": $string($$.builds[-1].build),\"sourceUrl\":\"https://github.com/PaperMC/Paper\",\"changelogUrl\":\"https://papermc.io/downloads/all\"}],\"sourceUrl\": \"https://github.com/PaperMC/Paper\",\"homepage\": \"https://papermc.io\"}"
+            ]
         }
     },
     "packageRules": [
@@ -82,6 +88,11 @@
             "matchPackagePatterns": ["^paper-minecraft$"],
             "matchBaseBranches": ["/^mc\\/paper\\/1\\.20\\.2/"],
             "allowedVersions": "<=1.20.2"
+        },
+        {
+            "matchPackagePatterns": ["^paper-minecraft$"],
+            "matchBaseBranches": ["/^mc\\/paper\\/1\\.20\\.3/"],
+            "allowedVersions": "<=1.20.3"
         },
         {
             "matchDatasources": ["maven"],
