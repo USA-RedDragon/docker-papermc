@@ -1,4 +1,4 @@
-FROM amazoncorretto:21.0.3-alpine@sha256:e85c947a4f836433fdb0f2c117b50e0dbb11a2eef3811a249ef00b068f6bce9a
+FROM amazoncorretto:21.0.3-alpine@sha256:0b1766ef32ffa1fbfeb364d31072175d995c881c664e334cd687eeaf216c2ffe
 
 ARG MC_VERSION=1.20.3
 ENV MC_VERSION=${MC_VERSION}
