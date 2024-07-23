@@ -1,4 +1,4 @@
-FROM amazoncorretto:21.0.4-alpine@sha256:88ca0023ea680ee8f2da87f30abef7303d1320ee9c9655a93e386aaba81647fa
+FROM amazoncorretto:21.0.4-alpine@sha256:acf34287ecb0d0660092d7c91d2fdff27d958a5584f5eb1b16f87b7a8afb8c83
 
 ARG PAPER_VERSION=1.20.4
 ARG PAPER_BUILD=497
