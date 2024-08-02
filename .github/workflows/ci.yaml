@@ -59,5 +59,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+          provenance: mode=max
+          sbom: true
           file: ./Dockerfile
           tags: ${{ steps.extract_tags.outputs.TAGS }}
